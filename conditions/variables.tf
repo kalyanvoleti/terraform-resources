@@ -4,12 +4,16 @@ variable "ami_id" {
   description = "This is RHEL9 AMI ID"
 }
 
+variable "environment" {
+  default = "prod"
+}
+
 variable "instance_type" {
-  # default = "t3.micro"
+  default = "t3.micro"
 }
 
 variable "ec2_tags" {
-  type = map
+  type = map(any)
   default = {
     Project     = "expense"
     Component   = "backend"
@@ -34,7 +38,7 @@ variable "cidr_blocks" {
 }
 
 variable "sg_tags" {
-  type = map
+  type = map(any)
   default = {
     Name = "expense-backend-dev"
   }
